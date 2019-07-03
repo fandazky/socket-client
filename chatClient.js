@@ -2,15 +2,7 @@
 // ***************************************************************************
 // General
 // ***************************************************************************
-
-var conf = { 
-    port: 9999,
-    debug: false,
-    dbPort: 6379,
-    dbHost: '127.0.0.1',
-    dbOptions: {},
-    mainroom: 'MainRoom'
-};
+require('dotenv').config();
 
 // External dependencies
 const express = require('express');
@@ -21,7 +13,7 @@ const bodyParser = require('body-parser');
 // HTTP Server configuration & launch
 var app = express(),
     server = http.createServer(app);
-    server.listen(conf.port);
+    server.listen(parseInt(process.env.APP_PORT));
 
 // Express app configuration
 app.use(bodyParser.json());
